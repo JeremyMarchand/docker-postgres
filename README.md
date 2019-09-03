@@ -26,11 +26,15 @@ docker ps
 ```
 * Stop a container
 ```shell
-docker stop ID or Name
+docker stop (ID or Name)
 ```
 * Stop all containers
 ```shell
 docker stop $(docker ps -a -q)
+```
+* Get container IP
+```shell
+docker inspect (ID or Name) | grep IPAddress
 ```
 
 ## Configuration
