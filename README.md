@@ -1,6 +1,6 @@
 # LAMP stack built with Docker Compose
 
-This is a basic LAMP stack environment built using Docker Compose. It consists following:
+This is a basic Linux Apache Postgres Php stack environment built using Docker Compose. It consists following:
 
 * PHP 7.2
 * Apache 2.4
@@ -9,17 +9,29 @@ This is a basic LAMP stack environment built using Docker Compose. It consists f
 
 ## Installation
 
-Clone this repository on your local computer and switch to branch `7.2.x`. Run the `docker-compose up -d`.
 
 ```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
-cd docker-compose-lamp/
-git fetch --all
-git checkout 7.2.x
+git clone git@github.com:JeremyMarchand/docker-postgres.git
+cd docker-postgres/
 docker-compose up -d
 ```
 
-Your LAMP stack is now ready!! You can access it via `http://localhost`.
+Your stack is now ready!! You can access it via `http://localhost`.
+
+## Docker
+#### Useful command
+* Display running containers
+```shell
+docker ps
+```
+* Stop a container
+```shell
+docker stop ID or Name
+```
+* Stop all containers
+```shell
+docker stop $(docker ps -a -q)
+```
 
 ## Configuration
 
@@ -35,10 +47,6 @@ _**DOCUMENT_ROOT**_
 
 It is a document root for Apache server. The default value for this is `./www`. All your sites will go here and will be synced automatically.
 
-_**MYSQL_DATA_DIR**_
-
-This is MySQL data directory. The default value for this is `./data/mysql`. All your MySQL data files will be stored here.
-
 _**VHOSTS_DIR**_
 
 This is for virtual hosts. The default value for this is `./config/vhosts`. You can place your virtual hosts conf files here.
@@ -48,10 +56,6 @@ This is for virtual hosts. The default value for this is `./config/vhosts`. You 
 _**APACHE_LOG_DIR**_
 
 This will be used to store Apache logs. The default value for this is `./logs/apache2`.
-
-_**MYSQL_LOG_DIR**_
-
-This will be used to store Apache logs. The default value for this is `./logs/mysql`.
 
 ## Web Server
 
@@ -85,6 +89,7 @@ By default following extensions are installed.
 
 * mysqli
 * mbstring
+* pgsql
 * zip
 * intl
 * mcrypt
@@ -97,14 +102,6 @@ By default following extensions are installed.
 
 > If you want to install more extension, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge if seems good for general purpose.
 > You have to rebuild the docker image by running `docker-compose build` and restart the docker containers.
-
-## phpMyAdmin
-
-phpMyAdmin is configured to run on port 8080. Use following default credentials.
-
-http://localhost:8080/  
-username: root  
-password: tiger
 
 ## Redis
 
