@@ -55,3 +55,5 @@ networks:
 volumes:
   postgres:
   pgadmin:
+extra_hosts:
+ - "probot.local:127.0.0.1"
