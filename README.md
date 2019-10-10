@@ -1,3 +1,6 @@
+
+
+
 # LAMP stack built with Docker Compose
 
 This is a basic Linux Apache Postgres Php stack environment built using Docker Compose. It consists following:
@@ -14,9 +17,19 @@ This is a basic Linux Apache Postgres Php stack environment built using Docker C
 git clone git@github.com:JeremyMarchand/docker-postgres.git
 cd docker-postgres/
 docker-compose up -d
+cd www
+git clone git@github.com:bigben3333/probot.git
+cd probot
+sh setup.sh
 ```
 
-Your stack is now ready!! You can access it via `http://localhost`.
+Ajouter cette ligne dans votre fichier host :
+
+```shell
+127.0.0.1 probot.local
+```
+
+Ensuite, c'est prêt ici `http://probot.local`.
 
 ## Docker
 #### Useful command
