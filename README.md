@@ -16,6 +16,7 @@ This is a basic Linux Apache Postgres Php stack environment built using Docker C
 ```shell
 git clone git@github.com:JeremyMarchand/docker-postgres.git
 cd docker-postgres/
+cp .env.e
 docker-compose up -d
 cd www
 git clone git@github.com:bigben3333/probot.git

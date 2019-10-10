@@ -1,6 +1,8 @@
 version: "3"
 
 services:
+#  extra_hosts: # will work only with docker-compose 1.3+
+#    - "probot.local:127.0.0.1"
   webserver:
     build: 
       context: ./bin/webserver
@@ -55,5 +57,4 @@ networks:
 volumes:
   postgres:
   pgadmin:
-extra_hosts:
- - "probot.local:127.0.0.1"
+
