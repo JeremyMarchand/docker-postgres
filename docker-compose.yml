@@ -13,7 +13,6 @@ services:
       - postgresql
     volumes: 
       - ${DOCUMENT_ROOT-./www}:/var/www/html
-      - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
   postgresql:
@@ -25,6 +24,7 @@ services:
     volumes: 
       - ${POSTGRESQL_DATA_DIR-./data/postgresql}:/var/lib/postgresql
       - ${POSTGRESQL_LOG_DIR-./logs/postgresql}:/var/log/postgresql
+      - ./db_init/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
     environment:
       POSTGRES_USER: ${POSTGRESQL_USER:-docker}
       POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD:-docker}
